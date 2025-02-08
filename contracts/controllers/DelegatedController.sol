@@ -19,30 +19,12 @@ contract DelegatedController {
 
     address public governance;
     address public onesplit;
-    address public rewards;
+    address public noots;
 
     // Vault to strategy mapping
     mapping(address => address) public vaults;
     // Strategy to vault mapping
     mapping(address => address) public strategies;
-
-    mapping(address => mapping(address => address)) public converters;
-
-    mapping(address => bool) public isVault;
-    mapping(address => bool) public isStrategy;
-
-    uint256 public split = 500;
-    uint256 public constant max = 10000;
-
-    constructor(address _rewards) public {
-        governance = msg.sender;
-        onesplit = address(0x50FDA034C0Ce7a8f7EFDAebDA7Aa7cA21CC1267e);
-        rewards = _rewards;
-    }
-
-    function setSplit(uint256 _split) external {
-        require(msg.sender == governance, "!governance");
-        split = _split;
     }
 
     function setOneSplit(address _onesplit) external {
